@@ -7,7 +7,7 @@ dependencies {
 }
 
 tasks.withType<ShadowJar> {
-    relocate("com.zaxxer.hikari", "$group.libs.hikari")
+    relocate("com.zaxxer.hikari", "me.xneox.commons.libs.libs.hikari")
 }
 
 tasks {

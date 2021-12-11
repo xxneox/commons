@@ -9,7 +9,7 @@ The `commons-core` module is a dependency of all other modules.
 * **commons-config** - shades and relocates Configurate (HOCON), simplifies configuration loading.
 
 ## Using as a dependency
-Uploading to jitpack... todo
+See https://jitpack.io/#xxneox/commons
 
 ## Example usage
 Todo!
