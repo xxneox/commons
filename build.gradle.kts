@@ -1,3 +1,5 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
 plugins {
     java
     `maven-publish`
@@ -40,11 +42,21 @@ subprojects {
         options.release.set(17)
     }
 
-    // Publish to jitpack.org
+    // Publishing to jitpack.org
+
+    tasks.withType<ShadowJar> {
+        // once these deprecated fields gets removed i'm gonna be fucked because nothing else works
+        archiveFileName.set("$baseName-$version.$extension")
+    }
+
+    artifacts {
+        archives(tasks["shadowJar"])
+    }
+
     publishing {
         publications {
             create<MavenPublication>("shadow") {
-                artifact(tasks["shadowJar"])
+                from(components["java"])
             }
         }
     }
