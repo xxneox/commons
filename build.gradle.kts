@@ -43,9 +43,8 @@ subprojects {
     // Publish to jitpack.org
     publishing {
         publications {
-            create<MavenPublication>("maven") {
-                from(components["java"])
-                artifact(tasks["shadowJar"])
+            create<MavenPublication>("shadow") {
+                project.shadow.component(this)
             }
         }
     }
