@@ -1,0 +1,18 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
+dependencies {
+    compileOnly(project(":commons-core"))
+
+    implementation("com.zaxxer:HikariCP:5.0.0")
+}
+
+tasks.withType<ShadowJar> {
+    relocate("com.zaxxer.hikari", "$group.libs.hikari")
+}
+
+tasks {
+    build {
+        dependsOn(shadowJar)
+    }
+}
+
