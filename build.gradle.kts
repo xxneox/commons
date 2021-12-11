@@ -46,6 +46,7 @@ subprojects {
             create<MavenPublication>("maven") {
                 artifactId = project.name
                 from(components["java"])
+                artifact(tasks["shadowJar"])
             }
         }
     }
