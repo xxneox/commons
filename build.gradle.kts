@@ -44,7 +44,11 @@ subprojects {
     publishing {
         publications {
             create<MavenPublication>("shadow") {
-                project.shadow.component(this)
+                afterEvaluate {
+                    val shadowJar = tasks.findByName("shadowJar")
+                    if (shadowJar == null) from(components["java"])
+                    else artifact(shadowJar)
+                }
             }
         }
     }
